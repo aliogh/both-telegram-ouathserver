@@ -24,11 +24,11 @@ const optionsSchema = Joi
     }).required(),
     http: Joi.object().keys({
       headers: Joi.object().default({
-        Accept: 'application/json',
+        'Content-type': 'application/json',
       }),
     }).default().unknown(true),
     options: Joi.object().keys({
-      bodyFormat: Joi.any().valid('form', 'json').default('form'),
+      bodyFormat: Joi.any().valid('form', 'json','qs').default('form'),
       useBasicAuthorizationHeader: Joi.boolean().default(true),
       useBodyAuth: Joi.boolean().default(true),
     }).default(),

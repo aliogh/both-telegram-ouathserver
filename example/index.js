@@ -6,21 +6,26 @@ const simpleOauthModule = require('./../');
 const app = express();
 const oauth2 = simpleOauthModule.create({
   client: {
-    id: '<CLIENT_ID>',
-    secret: '<CLIENT_SECRET>',
+    id: 'app.bbva.vga.bot',
+    secret: 'wn7OIEYKluPzeWudjxeeaeEQBRWZ3j70U*kVUMwjSEsmLFGB04kxH3LYpDGp1cnP',
   },
   auth: {
-    tokenHost: 'https://github.com',
-    tokenPath: '/login/oauth/access_token',
-    authorizePath: '/login/oauth/authorize',
+    tokenHost: 'https://connect.bbva.com',
+    tokenPath: '/token',
+    authorizePath: '/sandboxconnect',
   },
+  options:{
+    useBasicAuthorizationHeader: true,
+    bodyFormat:'qs',
+    useBodyAuth:false
+  }
 });
 
 // Authorization uri definition
 const authorizationUri = oauth2.authorizationCode.authorizeURL({
   redirect_uri: 'http://localhost:3000/callback',
-  scope: 'notifications',
-  state: '3(#0/!~',
+  // scope: 'notifications',
+  // state: '3(#0/!~',
 });
 
 // Initial page redirecting to Github
@@ -32,11 +37,15 @@ app.get('/auth', (req, res) => {
 // Callback service parsing the authorization token and asking for the access token
 app.get('/callback', (req, res) => {
   const code = req.query.code;
+  const redirect_uri = 'http://localhost:3000/callback';
+  console.log('AQUIIIII ESTA EL CODE: '+code)
   const options = {
     code,
+    redirect_uri,
   };
 
   oauth2.authorizationCode.getToken(options, (error, result) => {
+
     if (error) {
       console.error('Access Token Error', error.message);
       return res.json('Authentication failed');

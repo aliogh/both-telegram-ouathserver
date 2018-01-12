@@ -1,0 +1,38 @@
+Nombre APP
+
+VGA-BOT
+
+Entorno
+
+Sandbox
+
+Entidad
+
+BBVA España
+
+APP id
+
+app.bbva.vga.bot
+
+Secret ID
+
+wn7OIEYKluPzeWudjxeeaeEQBRWZ3j70U*kVUMwjSEsmLFGB04kxH3LYpDGp1cnP
+
+Descripción
+
+VGA BOT
+
+Host url
+
+127.0.0.1
+
+Redirect url
+
+https://s3-eu-west-1.amazonaws.com/openp-clientapi-prod-eu-west-1/public/callback/index.htm
+
+
+[13:03] 
+hostUrl:string = 'https://connect.bbva.com';
+ appId:string = 'app.bbva.vga.bot';
+ secretId:string = 'wn7OIEYKluPzeWudjxeeaeEQBRWZ3j70U*kVUMwjSEsmLFGB04kxH3LYpDGp1cnP';
+ redirectUrl:string = 'https://s3-eu-west-1.amazonaws.com/openp-clientapi-prod-eu-west-1/public/callback/index.html';
